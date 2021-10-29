@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
+
 function List({ contacts }) {
   const [searchText, setSearchText] = useState("");
 
@@ -19,16 +20,20 @@ function List({ contacts }) {
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
-
-      <ul>
+      <h3>Contact List</h3>
+      <ul className='list'>
         {/* {contacts.forEach((contact) => {
           <li>{contact.fullname}</li>;
         })} */}
 
         {searched.map((contact, i) => (
-          <li key={i}>{contact.fullname}</li>
+          <li key={i}>
+            <span>{contact.fullname}</span>
+            <span>{contact.phone_number}</span>
+          </li>
         ))}
       </ul>
+      <p>Total contacts: ({searched.length})</p>
     </div>
   );
 }
